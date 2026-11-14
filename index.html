@@ -85,7 +85,7 @@
 
 <script>
 var TARGET = "https://5c45a42a.r40.cpolar.top";
-var STAMP  = "2026-11-14 13:07";
+var STAMP  = "2026-11-14 15:58";
 
 (function(){
   var host = document.getElementById("targetHost");
@@ -109,9 +109,16 @@ var STAMP  = "2026-11-14 13:07";
   host.textContent = h;
   document.getElementById("stamp").textContent = STAMP || "—";
 
+  /* 存档恢复码：在这台设备上打开一次 ?restore=班级码，之后每次进入都会带上，
+     即使家里公网地址变了，也能从云端把进度接回来。 */
+  var sp = new URLSearchParams(location.search);
+  var rc = sp.get("restore") || "";
+  if(rc){ try{ localStorage.setItem("math_restore_class", rc); }catch(e){} }
+  try{ rc = localStorage.getItem("math_restore_class") || ""; }catch(e){ rc = ""; }
+
   function go1(){
     if(timer){ clearInterval(timer); timer = null; }
-    location.href = TARGET + (location.search || "");
+    location.href = TARGET + (rc ? ("?restore=" + encodeURIComponent(rc)) : (location.search || ""));
   }
   go.addEventListener("click", go1);
 
