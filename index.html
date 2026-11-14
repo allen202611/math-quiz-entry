@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>鍥涘勾绾ф暟瀛﹂棷鍏?路 鍏ュ彛</title>
+<title>四年级数学闯关 · 入口</title>
 <meta name="theme-color" content="#0f1216">
 <style>
   :root{
@@ -58,29 +58,29 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="badge"><span class="dot"></span><span id="state">閫氶亾鍦ㄧ嚎</span></div>
+  <div class="badge"><span class="dot"></span><span id="state">通道在线</span></div>
 
-  <h1>鍥涘勾绾ф暟瀛﹂棷鍏?/h1>
-  <p class="sub">闂叧 路 鍙ｇ畻 路 瀵规垬 路 鎺掕姒?br>鍥哄畾鍏ュ彛锛屾崲鍦板潃涔熶笉褰卞搷鏀惰棌</p>
+  <h1>四年级数学闯关</h1>
+  <p class="sub">闯关 · 口算 · 对战 · 排行榜<br>固定入口，换地址也不影响收藏</p>
 
   <div class="card">
-    <div class="row"><span>浠婃棩鍦板潃</span><span class="url" id="targetHost">鈥?/span></div>
-    <div class="row"><span>娓告垙鐗堟湰</span><b id="ver">鈥?/b></div>
-    <div class="row"><span>鍏ュ彛缁存姢</span><span id="stamp">鈥?/span></div>
+    <div class="row"><span>今日地址</span><span class="url" id="targetHost">—</span></div>
+    <div class="row"><span>游戏版本</span><b id="ver">—</b></div>
+    <div class="row"><span>入口维护</span><span id="stamp">—</span></div>
 
-    <button class="btn" id="go">绔嬪嵆杩涘叆锛?span class="count" id="n">3</span> 绉掑悗鑷姩璺宠浆锛?/button>
+    <button class="btn" id="go">立即进入（<span class="count" id="n">3</span> 秒后自动跳转）</button>
     <div class="bar"><i id="prog"></i></div>
 
     <div class="warn" id="warn"></div>
   </div>
 
-  <p class="tip">鎶婅繖涓〉闈㈡敹钘忓ソ灏辫锛屽湴鍧€姘镐笉鍙樸€傛瘡澶╁紑鏈烘椂瀹冧細鑷姩鎸囧悜鏈€鏂扮殑娓告垙鍦板潃銆?br>濡傛灉 10 绉掑悗杩樻病杩涘幓锛岀偣涓婇潰鐨勬寜閽噸璇曚竴娆°€?/p>
-  <p class="foot">鍥哄畾鍏ュ彛 路 鑷姩鏇存柊</p>
+  <p class="tip">把这个页面收藏好就行，地址永不变。每天开机时它会自动指向最新的游戏地址。<br>如果 10 秒后还没进去，点上面的按钮重试一次。</p>
+  <p class="foot">固定入口 · 自动更新</p>
 </div>
 
 <script>
 var TARGET = "https://65c5e94e.r40.cpolar.top";
-var STAMP  = "2026-11-14 09:46";
+var STAMP  = "2026-11-14 10:02";
 
 (function(){
   var host = document.getElementById("targetHost");
@@ -88,21 +88,21 @@ var STAMP  = "2026-11-14 09:46";
   var n = 3, timer = null;
 
   if(!TARGET || TARGET.indexOf("http") !== 0){
-    host.textContent = "闅ч亾鏈紑鍚?;
-    go.textContent = "鏆傛湭寮€鍚紝绋嶅悗鍐嶈瘯";
+    host.textContent = "隧道未开启";
+    go.textContent = "暂未开启，稍后再试";
     go.disabled = true;
     go.style.opacity = .55;
-    document.getElementById("state").textContent = "閫氶亾绂荤嚎";
-    document.getElementById("stamp").textContent = STAMP || "鈥?;
+    document.getElementById("state").textContent = "通道离线";
+    document.getElementById("stamp").textContent = STAMP || "—";
     var w = document.getElementById("warn");
     w.style.display = "block";
-    w.textContent = "瀹堕噷鐢佃剳杩樻病寮€閫氶亾銆傝璁╁闀垮弻鍑汇€屽紑鍚浗鍐呴€氶亾.bat銆嶏紝鎴栫◢鍚庡啀鎵撳紑鏈〉銆?;
+    w.textContent = "家里电脑还没开通道。请让家长双击「开启国内通道.bat」，或稍后再打开本页。";
     return;
   }
 
   var h = TARGET.replace(/^https?:\/\//,"").replace(/\/$/,"");
   host.textContent = h;
-  document.getElementById("stamp").textContent = STAMP || "鈥?;
+  document.getElementById("stamp").textContent = STAMP || "—";
 
   function go1(){
     if(timer){ clearInterval(timer); timer = null; }
