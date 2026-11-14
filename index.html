@@ -3,8 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>四年级数学闯关 · 入口</title>
-<meta name="theme-color" content="#0f1216">
+<title>四年级语数英闯关 · 入口</title>
+<meta name="theme-color" content="#0d1420">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
 <style>
   :root{
     --bg:#0f1216; --card:#171d25; --line:rgba(255,255,255,.10);
@@ -60,8 +63,8 @@
 <div class="wrap">
   <div class="badge"><span class="dot"></span><span id="state">通道在线</span></div>
 
-  <h1>四年级数学闯关</h1>
-  <p class="sub">闯关 · 口算 · 对战 · 排行榜<br>固定入口，换地址也不影响收藏</p>
+  <h1>四年级语数英闯关</h1>
+  <p class="sub">语文 · 数学 · 英语 · 地堡生存<br>固定入口，换地址也不影响收藏</p>
 
   <div class="card">
     <div class="row"><span>今日地址</span><span class="url" id="targetHost">—</span></div>
@@ -79,8 +82,8 @@
 </div>
 
 <script>
-var TARGET = "https://5c45a42a.r40.cpolar.top";
-var STAMP  = "2026-11-14 12:49";
+var TARGET = "__TARGET__";
+var STAMP  = "__STAMP__";
 
 (function(){
   var host = document.getElementById("targetHost");
