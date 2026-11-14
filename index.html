@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>鍥涘勾绾ф暟瀛﹂棷鍏?路 鍏ュ彛</title>
+<meta name="theme-color" content="#0f1216">
+<style>
+  :root{
+    --bg:#0f1216; --card:#171d25; --line:rgba(255,255,255,.10);
+    --txt:#eef3f9; --muted:#8d9bad; --gold:#ffb74d; --blue:#4aa8ff; --green:#3ddc97;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%}
+  body{
+    background:
+      radial-gradient(900px 520px at 18% -8%, rgba(74,168,255,.20), transparent 62%),
+      radial-gradient(760px 460px at 92% 8%, rgba(255,183,77,.16), transparent 60%),
+      linear-gradient(180deg,#0f1216 0%,#0b0e12 100%);
+    color:var(--txt); font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    display:flex; align-items:center; justify-content:center; padding:24px 18px calc(24px + env(safe-area-inset-bottom));
+  }
+  .wrap{width:100%;max-width:460px}
+  .badge{
+    display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--green);
+    border:1px solid rgba(61,220,151,.34);background:rgba(61,220,151,.10);
+    padding:6px 12px;border-radius:999px;margin-bottom:18px;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(61,220,151,.16)}
+  h1{font-size:26px;line-height:1.28;margin:0 0 8px;letter-spacing:.4px}
+  .sub{color:var(--muted);font-size:14px;line-height:1.7;margin:0 0 22px}
+  .card{
+    background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));
+    border:1px solid var(--line);border-radius:18px;padding:18px 16px 16px;
+    box-shadow:0 18px 46px rgba(0,0,0,.34);
+  }
+  .row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;font-size:14px;border-bottom:1px dashed rgba(255,255,255,.08)}
+  .row:last-child{border-bottom:0}
+  .row b{font-weight:600}
+  .url{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;color:var(--blue);word-break:break-all;text-align:right;max-width:62%}
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;height:54px;margin-top:16px;border:0;border-radius:14px;cursor:pointer;
+    font-size:17px;font-weight:600;color:#08131f;
+    background:linear-gradient(180deg,#8fd0ff,#4aa8ff);
+    box-shadow:0 10px 26px rgba(74,168,255,.28);
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn.gold{background:linear-gradient(180deg,#ffd68a,#ffb74d);box-shadow:0 10px 26px rgba(255,183,77,.26)}
+  .tip{margin-top:16px;font-size:12.5px;line-height:1.75;color:var(--muted)}
+  .bar{height:5px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden;margin-top:14px}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--blue));transition:width 1s linear}
+  .count{color:var(--gold);font-weight:600}
+  .foot{margin-top:20px;text-align:center;font-size:12px;color:#5f6c7d}
+  .warn{display:none;margin-top:14px;padding:12px;border-radius:12px;font-size:13px;line-height:1.7;
+        background:rgba(255,86,86,.10);border:1px solid rgba(255,86,86,.28);color:#ffb4b4}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="badge"><span class="dot"></span><span id="state">閫氶亾鍦ㄧ嚎</span></div>
+
+  <h1>鍥涘勾绾ф暟瀛﹂棷鍏?/h1>
+  <p class="sub">闂叧 路 鍙ｇ畻 路 瀵规垬 路 鎺掕姒?br>鍥哄畾鍏ュ彛锛屾崲鍦板潃涔熶笉褰卞搷鏀惰棌</p>
+
+  <div class="card">
+    <div class="row"><span>浠婃棩鍦板潃</span><span class="url" id="targetHost">鈥?/span></div>
+    <div class="row"><span>娓告垙鐗堟湰</span><b id="ver">鈥?/b></div>
+    <div class="row"><span>鍏ュ彛缁存姢</span><span id="stamp">鈥?/span></div>
+
+    <button class="btn" id="go">绔嬪嵆杩涘叆锛?span class="count" id="n">3</span> 绉掑悗鑷姩璺宠浆锛?/button>
+    <div class="bar"><i id="prog"></i></div>
+
+    <div class="warn" id="warn"></div>
+  </div>
+
+  <p class="tip">鎶婅繖涓〉闈㈡敹钘忓ソ灏辫锛屽湴鍧€姘镐笉鍙樸€傛瘡澶╁紑鏈烘椂瀹冧細鑷姩鎸囧悜鏈€鏂扮殑娓告垙鍦板潃銆?br>濡傛灉 10 绉掑悗杩樻病杩涘幓锛岀偣涓婇潰鐨勬寜閽噸璇曚竴娆°€?/p>
+  <p class="foot">鍥哄畾鍏ュ彛 路 鑷姩鏇存柊</p>
+</div>
+
+<script>
+var TARGET = "https://65c5e94e.r40.cpolar.top";
+var STAMP  = "2026-11-14 09:46";
+
+(function(){
+  var host = document.getElementById("targetHost");
+  var go = document.getElementById("go");
+  var n = 3, timer = null;
+
+  if(!TARGET || TARGET.indexOf("http") !== 0){
+    host.textContent = "闅ч亾鏈紑鍚?;
+    go.textContent = "鏆傛湭寮€鍚紝绋嶅悗鍐嶈瘯";
+    go.disabled = true;
+    go.style.opacity = .55;
+    document.getElementById("state").textContent = "閫氶亾绂荤嚎";
+    document.getElementById("stamp").textContent = STAMP || "鈥?;
+    var w = document.getElementById("warn");
+    w.style.display = "block";
+    w.textContent = "瀹堕噷鐢佃剳杩樻病寮€閫氶亾銆傝璁╁闀垮弻鍑汇€屽紑鍚浗鍐呴€氶亾.bat銆嶏紝鎴栫◢鍚庡啀鎵撳紑鏈〉銆?;
+    return;
+  }
+
+  var h = TARGET.replace(/^https?:\/\//,"").replace(/\/$/,"");
+  host.textContent = h;
+  document.getElementById("stamp").textContent = STAMP || "鈥?;
+
+  function go1(){
+    if(timer){ clearInterval(timer); timer = null; }
+    location.href = TARGET;
+  }
+  go.addEventListener("click", go1);
+
+  var prog = document.getElementById("prog"), num = document.getElementById("n");
+  prog.style.width = "0%";
+  var started = Date.now();
+  timer = setInterval(function(){
+    var p = Math.min(1, (Date.now() - started) / 3000);
+    prog.style.width = (p * 100).toFixed(1) + "%";
+    var left = Math.max(0, 3 - Math.floor((Date.now() - started) / 1000));
+    num.textContent = left;
+    if(p >= 1) go1();
+  }, 120);
+})();
+</script>
+</body>
+</html>
