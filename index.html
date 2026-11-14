@@ -80,7 +80,7 @@
 
 <script>
 var TARGET = "https://65c5e94e.r40.cpolar.top";
-var STAMP  = "2026-11-14 10:02";
+var STAMP  = "2026-11-14 10:29";
 
 (function(){
   var host = document.getElementById("targetHost");
@@ -106,7 +106,7 @@ var STAMP  = "2026-11-14 10:02";
 
   function go1(){
     if(timer){ clearInterval(timer); timer = null; }
-    location.href = TARGET;
+    location.href = TARGET + (location.search || "");
   }
   go.addEventListener("click", go1);
 
